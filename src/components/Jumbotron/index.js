@@ -1,10 +1,10 @@
 import React from "react";
 
-function Jumbotron(props) {
+function Jumbotron() {
     return (
-        <div class="jumbotron">
-  <h1 class="display-4">Employee Directory!</h1>
-  <p class="lead">Click on carrots to filter by heading or use the search box below to narrow your results.</p>
+        <div className="jumbotron">
+  <h1 className="display-4">Employee Directory!</h1>
+  <p className="lead">Click on carrots to filter by heading or use the search box below to narrow your results.</p>
 </div>
     );
 }
