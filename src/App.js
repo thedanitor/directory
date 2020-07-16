@@ -23,8 +23,8 @@ class App extends Component {
   };
 
   render() {
-    // console.log(this.state.result.name)
-    console.log('stae', this.state.result.length)
+
+    // console.log('state', this.state.result.length)
 
     const employeeMap = this.state.result.map((employee, index) => {
       const { name, phone, email, dob, picture }= employee
