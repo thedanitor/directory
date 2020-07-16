@@ -1,18 +1,17 @@
 import React from "react";
 
-function EmployeeRow({image, name, phone, email, dob}) {
-    return (
-        <div className="container">
+function EmployeeRow({ picture, name, phone, email, dob }) {
+  return (
+    <div className="container">
       <div className="row">
-    <div className="col-2">{image}</div>
-        <div className="col-2">{name}</div>
-        <div className="col-2">{phone}</div>
-        <div className="col-2">{email}</div>
-        <div className="col-2">{dob}</div>
-
+        <div className="col-2"><img alt={name.first + " " + name.last} src={picture.thumbnail} /></div>
+        <div className="col-2"><h3>{name.first + " " + name.last}</h3></div>
+        <div className="col-2"><h3>{phone}</h3></div>
+        <div className="col-2"><h3>{email}</h3></div>
+        <div className="col-2"><h3>{dob.date}</h3></div>
       </div>
     </div>
-    );
+  );
 }
 
 export default EmployeeRow;

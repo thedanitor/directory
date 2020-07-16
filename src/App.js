@@ -9,28 +9,43 @@ import EmployeeRow from "./components/EmployeeRow";
 
 class App extends Component {
   state = {
-    result: {},
+    result: []
   };
 
-  populateEmployees = query => {
-    API.getEmployees(query)
-      .then(res => this.setState({ result: res.data }))
+  componentDidMount() {
+    this.populateEmployees();
+  }
+
+  populateEmployees = () => {
+    API.getEmployees()
+      .then(res => this.setState({ result: res.data.results }))
       .catch(err => console.log(err));
   };
 
   render() {
+    // console.log(this.state.result.name)
+    console.log('stae', this.state.result.length)
+
+    const employeeMap = this.state.result.map((employee, index) => {
+      const { name, phone, email, dob, picture }= employee
+      return <EmployeeRow key={index} name={name} dob={dob} email={email} phone={phone} picture={picture}/>
+    })
+
     return (
       <Wrapper>
         <Jumbotron />
         <SearchBar />
         <TableHeader />
-        <EmployeeRow>
-        {/* image={this.state.result.picture.thumbnail} */}
-
-        </EmployeeRow>
+        {employeeMap}
       </Wrapper>
     );
   }
 }
 
 export default App;
+
+
+//this.stat.resulte.sort((a,b) => return b-a)
+//this.state.ascending = true? sort)a-b : sort(b-a)
+
+//button sort handleClick this.setstate !
