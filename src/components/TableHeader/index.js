@@ -1,18 +1,17 @@
 import React from "react";
 
 function TableHeader() {
-    return (
-        <div className="container">
-      <div className="row">
-        <div className="col-2">Image</div>
-        <div className="col-2">Name</div>
-        <div className="col-2">Phone</div>
-        <div className="col-2">Email</div>
-        <div className="col-2">DOB</div>
-
-      </div>
-    </div>
-    );
+  return (
+    <thead>
+      <tr>
+        <th scope="col">Image</th>
+        <th scope="col">Name</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Email</th>
+        <th scope="col">DOB</th>
+      </tr>
+    </thead>
+  );
 }
 
 export default TableHeader;

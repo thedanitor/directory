@@ -4,12 +4,11 @@ import API from "./utils/API";
 import Wrapper from "./components/Wrapper";
 import Jumbotron from "./components/Jumbotron";
 import SearchBar from "./components/SearchBar";
-import TableHeader from "./components/TableHeader";
-import EmployeeRow from "./components/EmployeeRow";
+import Table from "./components/Table";
 
 class App extends Component {
   state = {
-    result: []
+    result: [],
   };
 
   componentDidMount() {
@@ -23,27 +22,19 @@ class App extends Component {
   };
 
   render() {
-
-    // console.log('state', this.state.result.length)
-
-    const employeeMap = this.state.result.map((employee, index) => {
-      const { name, phone, email, dob, picture }= employee
-      return <EmployeeRow key={index} name={name} dob={dob} email={email} phone={phone} picture={picture}/>
-    })
+    console.log("state", this.state.result.length);
 
     return (
       <Wrapper>
         <Jumbotron />
         <SearchBar />
-        <TableHeader />
-        {employeeMap}
+        <Table result={this.state.result} />
       </Wrapper>
     );
   }
 }
 
 export default App;
-
 
 //this.stat.resulte.sort((a,b) => return b-a)
 //this.state.ascending = true? sort)a-b : sort(b-a)
