@@ -9,6 +9,8 @@ import Table from "./components/Table";
 class App extends Component {
   state = {
     result: [],
+    searchResult: [],
+    search: "",
   };
 
   componentDidMount() {
@@ -17,8 +19,32 @@ class App extends Component {
 
   populateEmployees = () => {
     API.getEmployees()
-      .then(res => this.setState({ result: res.data.results }))
+      .then(res =>
+        this.setState({
+          result: res.data.results,
+          searchResult: res.data.results,
+        })
+      )
       .catch(err => console.log(err));
+  };
+
+  // sortAscend = () => {
+  //   this.state.result.sort((a,b) => {
+  //     return b-a;
+  //   })
+  // }
+
+  handleInputChange = e => {
+    this.setState({ search: e.target.value.toLowerCase() });
+    this.searchName();
+  };
+
+  searchName = () => {
+    let nameSearch = this.state.result.filter(employee => {
+      let fullName = `${employee.name.first.toLowerCase()} ${employee.name.last.toLowerCase()}`;
+      return fullName.includes(this.state.search);
+    });
+    this.setState({ searchResult: nameSearch });
   };
 
   render() {
@@ -27,8 +53,11 @@ class App extends Component {
     return (
       <Wrapper>
         <Jumbotron />
-        <SearchBar />
-        <Table result={this.state.result} />
+        <SearchBar
+          input={this.handleInputChange}
+          search={this.state.search}
+        />
+        <Table result={this.state.searchResult} sortAscend={this.sortAscend} />
       </Wrapper>
     );
   }
@@ -36,7 +65,7 @@ class App extends Component {
 
 export default App;
 
-//this.stat.resulte.sort((a,b) => return b-a)
+//this.state.result.sort((a,b) => return b-a)
 //this.state.ascending = true? sort)a-b : sort(b-a)
 
 //button sort handleClick this.setstate !
