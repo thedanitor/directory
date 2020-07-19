@@ -1,13 +1,22 @@
 import React from "react";
+import "./index.css";
 
 function TableHeader(props) {
   return (
     <thead>
       <tr>
         <th scope="col">Image</th>
-        <th scope="col">Name <button id="name" onClick={props.sortList} className="btn btn-outline-primary">Sort A-Z</button></th>
+        <th scope="col">
+          <span className="pointer" id="name" onClick={props.sortList}>
+            Name
+          </span>
+        </th>
         <th scope="col">Phone</th>
-        <th scope="col">Email <button id="email" onClick={props.sortList} className="btn btn-outline-primary">Sort A-Z</button></th>
+        <th scope="col">
+          <span className="pointer" id="name" onClick={props.sortList}>
+            Email
+          </span>
+        </th>
         <th scope="col">DOB</th>
       </tr>
     </thead>
