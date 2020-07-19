@@ -1,0 +1,1 @@
+{"version":3,"sources":["App.css","index.css"],"names":[],"mappings":"AAAA,EACE,iBACF,CCFA,WACI,wBAAyB,CACzB,iBAAkB,CAClB,UAAY,CACZ,4BAA6B,CAC7B,eACJ,CANA,iBACI,mBACJ,CAFA,2BACI,WACF","file":"main.c83fc9d9.chunk.css","sourcesContent":["* {\n  font-family: arial;\n}\n\n\n","thead .pointer:hover:after {\r\n    content: \"▼\";\r\n  }"]}
