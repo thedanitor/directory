@@ -1,8 +1,9 @@
 import React from "react";
+import "./index.css";
 
 function SearchBar(props) {
   return (
-    <div className="container">
+    <div className="container searchContainer">
       <div className="row">
         <div className="col-4"></div>
         <div className="col-4">

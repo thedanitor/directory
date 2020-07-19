@@ -29,11 +29,6 @@ class App extends Component {
       .catch(err => console.log(err));
   };
 
-  // handleSortClick = e => {
-  //   e.preventDefault();
-  //   this.sortList(this.state.sortBy);
-  // };
-
   sortList = (e) => {
     const sortHeader = e.target.id;
     if (this.state.sortBy === sortHeader) {
