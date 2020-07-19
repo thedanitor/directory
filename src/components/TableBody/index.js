@@ -1,10 +1,10 @@
 import React from "react";
-
-
+import Moment from "moment";
 
 function TableBody(props) {
   const employeeMap = props.result.map((employee, index) => {
     const { name, phone, email, dob, picture } = employee;
+    const shortDate = Moment(dob.date).format("L");
     return (
       <tr key={index}>
         <td>
@@ -13,7 +13,7 @@ function TableBody(props) {
         <td>{name.first + " " + name.last}</td>
         <td>{phone}</td>
         <td>{email}</td>
-        <td>{dob.date}</td>
+        <td>{shortDate}</td>
       </tr>
     );
   });

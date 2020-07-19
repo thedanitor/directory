@@ -44,6 +44,7 @@ class App extends Component {
       let fullName = `${employee.name.first.toLowerCase()} ${employee.name.last.toLowerCase()}`;
       return fullName.includes(this.state.search);
     });
+    console.log(nameSearch);
     this.setState({ searchResult: nameSearch });
   };
 
