@@ -4,6 +4,8 @@ This app gets a list of employees and allows the user to search by name, sort by
 
 https://thedanitor.github.io/directory/
 
+![Employee Directory Demo](/public/screens/directoryDemo.gif)
+
 ## Table of Contents
 
 * [Description](#description)
@@ -34,5 +36,3 @@ The lists can be sorted alphabetically or reverse-alphabetically by clicking on 
 ## Acknowledgements
 
 I would like to thank UW Coding bootcamp, tutors Namita and Frank Craven, instructor John Young, and TA's Abdul Aziz and Ben Vaagen.
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
