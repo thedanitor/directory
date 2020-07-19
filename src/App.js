@@ -9,8 +9,9 @@ import Table from "./components/Table";
 class App extends Component {
   state = {
     result: [],
-    searchResult: [],
+    filterResult: [],
     search: "",
+    sortBy: ""
   };
 
   componentDidMount() {
@@ -22,17 +23,40 @@ class App extends Component {
       .then(res =>
         this.setState({
           result: res.data.results,
-          searchResult: res.data.results,
+          filterResult: res.data.results,
         })
       )
       .catch(err => console.log(err));
   };
 
-  // sortAscend = () => {
-  //   this.state.result.sort((a,b) => {
-  //     return b-a;
-  //   })
-  // }
+  // handleSortClick = e => {
+  //   e.preventDefault();
+  //   this.sortList(this.state.sortBy);
+  // };
+
+  sortList = (e) => {
+    const sortHeader = e.target.id;
+    if (this.state.sortBy === sortHeader) {
+      return this.setState({
+        filterResult: this.state.filterResult.reverse(),
+        sortBy: sortHeader
+      })
+    }
+
+    let sortedList = this.state.result.sort((a, b) => {
+      if (sortHeader === "name") {
+        return a.name.first < b.name.first ? 1 : -1;
+      } else if (sortHeader === "email") {
+        return a.email < b.email ? 1 : -1;
+      } else {
+        return a[sortHeader] < b[sortHeader] ? 1 : -1;
+      }
+    });
+    this.setState({
+      filterResult: sortedList,
+      sortBy: sortHeader
+    })
+  };
 
   handleInputChange = e => {
     this.setState({ search: e.target.value.toLowerCase() });
@@ -44,21 +68,19 @@ class App extends Component {
       let fullName = `${employee.name.first.toLowerCase()} ${employee.name.last.toLowerCase()}`;
       return fullName.includes(this.state.search);
     });
-    console.log(nameSearch);
-    this.setState({ searchResult: nameSearch });
+    this.setState({ filterResult: nameSearch });
   };
 
   render() {
-    console.log("state", this.state.result.length);
-
     return (
       <Wrapper>
         <Jumbotron />
-        <SearchBar
-          input={this.handleInputChange}
-          search={this.state.search}
+        <SearchBar input={this.handleInputChange} search={this.state.search} />
+        <Table
+          result={this.state.filterResult}
+          sortList={this.sortList}
+          // handleSortClick={this.handleSortClick}
         />
-        <Table result={this.state.searchResult} sortAscend={this.sortAscend} />
       </Wrapper>
     );
   }

@@ -5,10 +5,12 @@ import TableBody from "../TableBody";
 function Table(props) {
   return (
     <table className="table table-striped table-hover table-responsive-lg">
-      <TableHeader />
-      <TableBody result={props.result} />
-</table>
-
+      <TableHeader
+        sortList={props.sortList}
+        // handleSortClick={props.handleSortClick}
+      />
+      <TableBody result={props.result} sortList={props.sortList}/>
+    </table>
   );
 }
 
